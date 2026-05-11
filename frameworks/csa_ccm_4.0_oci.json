@@ -1,0 +1,113 @@
+{
+  "Framework": "CSA CCM",
+  "Version": "4.0",
+  "Provider": "OracleCloud",
+  "Description": "CSA Cloud Controls Matrix v4.0 \u2014 Oracle Cloud Infrastructure (OCI) mapping",
+  "Requirements": [
+    {
+      "Id": "IAM-O1-OCI",
+      "Description": "Identity \u2014 Password Policy Minimum Length (OCI)",
+      "Checks": [
+        "identity_password_policy_minimum_length_14"
+      ]
+    },
+    {
+      "Id": "IAM-O2-OCI",
+      "Description": "Identity \u2014 Password Expiration Policy (OCI)",
+      "Checks": [
+        "identity_password_policy_expires_within_365_days"
+      ]
+    },
+    {
+      "Id": "IAM-O3-OCI",
+      "Description": "Identity \u2014 Password Reuse Prevention (OCI)",
+      "Checks": [
+        "identity_password_policy_prevents_reuse"
+      ]
+    },
+    {
+      "Id": "IAM-O7-OCI",
+      "Description": "Identity \u2014 MFA for Console Access (OCI)",
+      "Checks": [
+        "identity_user_mfa_enabled_console_access"
+      ]
+    },
+    {
+      "Id": "IAM-O10-OCI",
+      "Description": "Identity \u2014 Root Compartment Resource Isolation (OCI)",
+      "Checks": [
+        "identity_no_resources_in_root_compartment"
+      ]
+    },
+    {
+      "Id": "IAM-O12-OCI",
+      "Description": "Identity \u2014 Admin Tenancy Update Controls (OCI)",
+      "Checks": [
+        "identity_iam_admins_cannot_update_tenancy_admins"
+      ]
+    },
+    {
+      "Id": "IAM-O13-OCI",
+      "Description": "Identity \u2014 Service Level Administrators (OCI)",
+      "Checks": [
+        "identity_service_level_admins_exist"
+      ]
+    },
+    {
+      "Id": "LOG-O3-OCI",
+      "Description": "Logging \u2014 Cloud Guard Detector Rules (OCI)",
+      "Checks": [
+        "events_rule_cloudguard_problems"
+      ]
+    },
+    {
+      "Id": "LOG-O4-OCI",
+      "Description": "Logging \u2014 Cloud Guard Security Monitoring (OCI)",
+      "Checks": [
+        "cloudguard_enabled"
+      ]
+    },
+    {
+      "Id": "LOG-O10-OCI",
+      "Description": "Logging \u2014 IAM Policy Change Events (OCI)",
+      "Checks": [
+        "events_rule_iam_policy_changes"
+      ]
+    },
+    {
+      "Id": "LOG-O11-OCI",
+      "Description": "Logging \u2014 IAM Group Change Events (OCI)",
+      "Checks": [
+        "events_rule_iam_group_changes"
+      ]
+    },
+    {
+      "Id": "LOG-O12-OCI",
+      "Description": "Logging \u2014 Identity Provider Change Events (OCI)",
+      "Checks": [
+        "events_rule_identity_provider_changes"
+      ]
+    },
+    {
+      "Id": "DCS-O1-OCI",
+      "Description": "Datacenter \u2014 Non-Root Compartment Structure (OCI)",
+      "Checks": [
+        "identity_non_root_compartment_exists"
+      ]
+    },
+    {
+      "Id": "DCS-O12-OCI",
+      "Description": "Datacenter \u2014 Root Compartment Resource Restriction (OCI)",
+      "Checks": [
+        "identity_no_resources_in_root_compartment"
+      ]
+    },
+    {
+      "Id": "TVM-O1-OCI",
+      "Description": "Threat & Vulnerability \u2014 Cloud Guard Threat Detection (OCI)",
+      "Checks": [
+        "cloudguard_enabled"
+      ]
+    }
+  ]
+}
