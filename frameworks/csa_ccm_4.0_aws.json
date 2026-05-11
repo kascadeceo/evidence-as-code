@@ -1,0 +1,2556 @@
+{
+    "Framework": "CSA-CCM-4.0",
+    "Provider": "aws",
+    "Version": "4.0",
+    "Name": "CSA Cloud Controls Matrix v4.0",
+    "Description": "Official TitanGuard mapping of CSA CCM v4.0.",
+    "Requirements": [
+        {
+            "Id": "A&A-01",
+            "Description": "Audit and Assurance Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\naudit and assurance policies...",
+            "Checks": [
+                "iam_customer_attached_policy_no_administrative_privileges",
+                "iam_inline_policy_no_administrative_privileges"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Audit & Assurance",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "A&A-02",
+            "Description": "Independent Assessments - Conduct independent audit and assurance assessments according to\nrelevant standards at least annuall...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Audit & Assurance",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "A&A-03",
+            "Description": "Risk Based Planning Assessment - Perform independent audit and assurance assessments according to\nrisk-based plans and policies.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Audit & Assurance",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "A&A-04",
+            "Description": "Requirements Compliance - Verify compliance with all relevant standards, regulations, legal/contractual,\nand statutory require...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Audit & Assurance",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "A&A-05",
+            "Description": "Audit Management Process - Define and implement an Audit Management process to support audit\nplanning, risk analysis, security ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Audit & Assurance",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "A&A-06",
+            "Description": "Remediation - Establish, document, approve, communicate, apply, evaluate and maintain\na risk-based corrective acti...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Audit & Assurance",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "AIS-01",
+            "Description": "Application and Interface Security Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Application & Interface Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "AIS-02",
+            "Description": "Application Security Baseline Requirements - Establish, document and maintain baseline requirements for securing\ndifferent applications.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Application & Interface Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "AIS-03",
+            "Description": "Application Security Metrics - Define and implement technical and operational metrics in alignment\nwith business objectives, securi...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Application & Interface Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "AIS-04",
+            "Description": "Secure Application Design and Development - Define and implement a SDLC process for application design, development,\ndeployment, and operation i...",
+            "Checks": [
+                "waf_web_acl_logging_enabled",
+                "cloudfront_distributions_https_enabled",
+                "elb_logging_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Application & Interface Security",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "AIS-05",
+            "Description": "Automated Application Security Testing - Implement a testing strategy, including criteria for acceptance of\nnew information systems, upgrades...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Application & Interface Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "AIS-06",
+            "Description": "Automated Secure Application Deployment - Establish and implement strategies and capabilities for secure, standardized,\nand compliant applicat...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Application & Interface Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "AIS-07",
+            "Description": "Application Vulnerability Remediation - Define and implement a process to remediate application security\nvulnerabilities, automating remedia...",
+            "Checks": [
+                "acm_certificates_expiration_check"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Application & Interface Security",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "BCR-01",
+            "Description": "Business Continuity Management Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\nbusiness continuity manageme...",
+            "Checks": [
+                "s3_bucket_cross_region_replication_enabled",
+                "rds_instance_backup_enabled",
+                "dynamodb_table_point_in_time_recovery_enabled",
+                "ec2_instance_account_backup_enabled",
+                "backup_plans_exist"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Business Continuity Management and Operational Resilience",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "BCR-02",
+            "Description": "Risk Assessment and Impact Analysis - Determine the impact of business disruptions and risks to establish\ncriteria for developing business...",
+            "Checks": [
+                "backup_plans_exist",
+                "dynamodb_table_protected_by_backup_plan",
+                "ec2_ebs_volume_protected_by_backup_plan",
+                "rds_cluster_protected_by_backup_plan",
+                "rds_instance_protected_by_backup_plan"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Business Continuity Management and Operational Resilience",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "BCR-03",
+            "Description": "Business Continuity Strategy - Establish strategies to reduce the impact of, withstand, and recover\nfrom business disruptions withi...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Business Continuity Management and Operational Resilience",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "BCR-04",
+            "Description": "Business Continuity Planning - Establish, document, approve, communicate, apply, evaluate and maintain\na business continuity plan b...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Business Continuity Management and Operational Resilience",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "BCR-05",
+            "Description": "Documentation - Develop, identify, and acquire documentation that is relevant to\nsupport the business continuity and...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Business Continuity Management and Operational Resilience",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "BCR-06",
+            "Description": "Business Continuity Exercises - Exercise and test business continuity and operational resilience\nplans at least annually or upon sig...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Business Continuity Management and Operational Resilience",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "BCR-07",
+            "Description": "Communication - Establish communication with stakeholders and participants in the\ncourse of business continuity and ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Business Continuity Management and Operational Resilience",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "BCR-08",
+            "Description": "Backup - Periodically backup data stored in the cloud. Ensure the confidentiality,\nintegrity and availability...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Business Continuity Management and Operational Resilience",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "BCR-09",
+            "Description": "Disaster Response Plan - Establish, document, approve, communicate, apply, evaluate and maintain\na disaster response plan to ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Business Continuity Management and Operational Resilience",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "BCR-10",
+            "Description": "Response Plan Exercise - Exercise the disaster response plan annually or upon significant\nchanges, including if possible loca...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Business Continuity Management and Operational Resilience",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "BCR-11",
+            "Description": "Equipment Redundancy - Supplement business-critical equipment with redundant equipment independently\nlocated at a reasonabl...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Business Continuity Management and Operational Resilience",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CCC-01",
+            "Description": "Change Management Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Change Control and Configuration Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CCC-02",
+            "Description": "Quality Testing - Follow a defined quality change control, approval and testing process\nwith established baselines, te...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Change Control and Configuration Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CCC-03",
+            "Description": "Change Management Technology - Manage the risks associated with applying changes to organization\nassets, including application, sys...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Change Control and Configuration Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CCC-04",
+            "Description": "Unauthorized Change Protection - Restrict the unauthorized addition, removal, update, and management\nof organization assets.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Change Control and Configuration Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CCC-05",
+            "Description": "Change Agreements - Include provisions limiting changes directly impacting CSCs owned\nenvironments/tenants to explicitly...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Change Control and Configuration Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CCC-06",
+            "Description": "Change Management Baseline - Establish change management baselines for all relevant authorized\nchanges on organization assets.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Change Control and Configuration Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CCC-07",
+            "Description": "Detection of Baseline Deviation - Implement detection measures with proactive notification in case\nof changes deviating from the estab...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Change Control and Configuration Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CCC-08",
+            "Description": "Exception Management - 'Implement a procedure for the management of exceptions, including\nemergencies, in the change and co...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Change Control and Configuration Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CCC-09",
+            "Description": "Change Restoration - Define and implement a process to proactively roll back changes to\na previous known good state in ca...",
+            "Checks": [
+                "config_recorder_all_regions_enabled",
+                "config_delivery_channels_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Change Control and Configuration Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-01",
+            "Description": "Encryption and Key Management Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-02",
+            "Description": "CEK Roles and Responsibilities - Define and implement cryptographic, encryption and key management\nroles and responsibilities.\n...",
+            "Checks": [
+                "iam_policy_no_full_access_to_kms",
+                "iam_inline_policy_no_full_access_to_kms"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-03",
+            "Description": "Data Encryption - Provide cryptographic protection to data at-rest and in-transit,\nusing cryptographic libraries certi...",
+            "Checks": [
+                "s3_bucket_default_encryption",
+                "s3_bucket_kms_encryption",
+                "rds_instance_storage_encrypted",
+                "ec2_ebs_volume_encryption",
+                "ec2_ebs_default_encryption",
+                "dynamodb_tables_kms_cmk_encryption_enabled",
+                "efs_encryption_at_rest_enabled",
+                "redshift_cluster_encrypted",
+                "elasticache_redis_cluster_rest_encryption_enabled",
+                "kinesis_stream_encrypted_at_rest",
+                "sns_topics_kms_encryption_at_rest_enabled",
+                "sqs_queues_kms_encryption_enabled",
+                "backup_vaults_encrypted",
+                "backup_recovery_point_encrypted",
+                "documentdb_cluster_storage_encrypted",
+                "cloudwatch_log_group_kms_encryption_enabled",
+                "athena_workgroup_encryption",
+                "eks_cluster_kms_cmk_encryption_in_secrets_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-04",
+            "Description": "Encryption Algorithm - Use encryption algorithms that are appropriate for data protection,\nconsidering the classification o...",
+            "Checks": [
+                "elb_ssl_listeners",
+                "elbv2_ssl_listeners",
+                "elbv2_insecure_ssl_ciphers",
+                "cloudfront_distributions_using_deprecated_ssl_protocols",
+                "cloudfront_distributions_https_enabled",
+                "cloudfront_distributions_origin_traffic_encrypted",
+                "opensearch_service_domains_node_to_node_encryption_enabled",
+                "acm_certificates_with_secure_key_algorithms",
+                "dms_endpoint_ssl_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-05",
+            "Description": "Encryption Change Management - Establish a standard change management procedure, to accommodate\nchanges from internal and external ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-06",
+            "Description": "Encryption Change Cost Benefit Analysis - Manage and adopt changes to cryptography-, encryption-, and key management-related\nsystems (includin...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-07",
+            "Description": "Encryption Risk Management - Establish and maintain an encryption and key management risk program\nthat includes provisions for ri...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-08",
+            "Description": "CSC Key Management Capability - CSPs must provide the capability for CSCs to manage their own data\nencryption keys.\n...",
+            "Checks": [
+                "kms_cmk_are_used",
+                "kms_key_not_publicly_accessible"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-09",
+            "Description": "Encryption and Key Management Audit - Audit encryption and key management systems, policies, and processes\nwith a frequency that is propor...",
+            "Checks": [
+                "cloudtrail_kms_encryption_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-10",
+            "Description": "Key Generation - Generate Cryptographic keys using industry accepted cryptographic\nlibraries specifying the algorithm...",
+            "Checks": [
+                "kms_cmk_are_used"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-11",
+            "Description": "Key Purpose - Manage cryptographic secret and private keys that are provisioned\nfor a unique purpose.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-12",
+            "Description": "Key Rotation - Rotate cryptographic keys in accordance with the calculated cryptoperiod,\nwhich includes provisions ...",
+            "Checks": [
+                "kms_cmk_rotation_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-13",
+            "Description": "Key Revocation - Define, implement and evaluate processes, procedures and technical\nmeasures to revoke and remove cry...",
+            "Checks": [
+                "kms_cmk_not_deleted_unintentionally"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-14",
+            "Description": "Key Destruction - Define, implement and evaluate processes, procedures and technical\nmeasures to destroy keys stored o...",
+            "Checks": [
+                "cloudwatch_log_metric_filter_disable_or_scheduled_deletion_of_kms_cmk"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-15",
+            "Description": "Key Activation - Define, implement and evaluate processes, procedures and technical\nmeasures to create keys in a pre-...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-16",
+            "Description": "Key Suspension - Define, implement and evaluate processes, procedures and technical\nmeasures to monitor, review and a...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-17",
+            "Description": "Key Deactivation - Define, implement and evaluate processes, procedures and technical\nmeasures to deactivate keys at th...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-18",
+            "Description": "Key Archival - Define, implement and evaluate processes, procedures and technical\nmeasures to manage archived keys ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-19",
+            "Description": "Key Compromise - Define, implement and evaluate processes, procedures and technical\nmeasures to use compromised keys ...",
+            "Checks": [
+                "kms_cmk_not_deleted_unintentionally"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-20",
+            "Description": "Key Recovery - Define, implement and evaluate processes, procedures and technical\nmeasures to assess the risk to op...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "CEK-21",
+            "Description": "Key Inventory Management - Define, implement and evaluate processes, procedures and technical\nmeasures in order for the key man...",
+            "Checks": [
+                "kms_cmk_are_used"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Cryptography, Encryption & Key Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-01",
+            "Description": "Off-Site Equipment Disposal Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [
+                "s3_bucket_object_lock",
+                "macie_is_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-02",
+            "Description": "Off-Site Transfer Authorization Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-03",
+            "Description": "Secure Area Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-04",
+            "Description": "Secure Media Transportation Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-05",
+            "Description": "Assets Classification - Classify and document the physical, and logical assets (e.g., applications)\nbased on the organizatio...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-06",
+            "Description": "Assets Cataloguing and Tracking - Catalogue and track all relevant physical and logical assets located\nat all of the CSP's sites withi...",
+            "Checks": [
+                "s3_bucket_public_access",
+                "s3_bucket_block_public_access_enabled",
+                "s3_public_access_block_account",
+                "s3_bucket_acl_prohibited"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-07",
+            "Description": "Controlled Access Points - Implement physical security perimeters to safeguard personnel, data,\nand information systems. Establ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-08",
+            "Description": "Equipment Identification - Use equipment identification as a method for connection authentication.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-09",
+            "Description": "Secure Area Authorization - Allow only authorized personnel access to secure areas, with all\ningress and egress points restricte...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-10",
+            "Description": "Surveillance System - Implement, maintain, and operate datacenter surveillance systems\nat the external perimeter and at al...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-11",
+            "Description": "Unauthorized Access Response Training - Train datacenter personnel to respond to unauthorized ingress or\negress attempts.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-12",
+            "Description": "Cabling Security - Define, implement and evaluate processes, procedures and technical\nmeasures that ensure a risk-based...",
+            "Checks": [
+                "ec2_ebs_snapshot_account_block_public_access"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-13",
+            "Description": "Environmental Systems - Implement and maintain data center environmental control systems\nthat monitor, maintain and test for...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-14",
+            "Description": "Secure Utilities - Secure, monitor, maintain, and test utilities services for continual\neffectiveness at planned interv...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DCS-15",
+            "Description": "Equipment Location - Keep business-critical equipment away from locations subject to high\nprobability for environmental r...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Datacenter Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-01",
+            "Description": "Security and Privacy Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-02",
+            "Description": "Secure Disposal - Apply industry accepted methods for the secure disposal of data from\nstorage media such that data is...",
+            "Checks": [
+                "s3_bucket_lifecycle_policy_check"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-03",
+            "Description": "Data Inventory - Create and maintain a data inventory, at least for any sensitive\ndata and personal data.\n...",
+            "Checks": [
+                "macie_is_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-04",
+            "Description": "Data Classification - Classify data according to its type and sensitivity level.\n...",
+            "Checks": [
+                "macie_is_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-05",
+            "Description": "Data Flow Documentation - Create data flow documentation to identify what data is processed,\nstored or transmitted where. Revi...",
+            "Checks": [
+                "vpc_flow_logs_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-06",
+            "Description": "Data Ownership and Stewardship - Document ownership and stewardship of all relevant documented personal\nand sensitive data. Perform r...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-07",
+            "Description": "Data Protection by Design and Default - Develop systems, products, and business practices based upon a principle\nof security by design and i...",
+            "Checks": [
+                "s3_bucket_default_encryption",
+                "rds_instance_storage_encrypted",
+                "ec2_ebs_default_encryption",
+                "s3_bucket_public_access"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-08",
+            "Description": "Data Privacy by Design and Default - Develop systems, products, and business practices based upon a principle\nof privacy by design and in...",
+            "Checks": [
+                "macie_is_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-09",
+            "Description": "Data Protection Impact Assessment - Conduct a Data Protection Impact Assessment (DPIA) to evaluate the\norigin, nature, particularity and...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-10",
+            "Description": "Sensitive Data Transfer - Define, implement and evaluate processes, procedures and technical\nmeasures that ensure any transfer...",
+            "Checks": [
+                "s3_bucket_secure_transport_policy",
+                "elb_ssl_listeners",
+                "cloudfront_distributions_https_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-11",
+            "Description": "Personal Data Access, Reversal, Rectification and Deletion - Define and implement, processes, procedures and technical measures\nto enable data subjects to reques...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-12",
+            "Description": "Limitation of Purpose in Personal Data Processing - Define, implement and evaluate processes, procedures and technical\nmeasures to ensure that personal ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-13",
+            "Description": "Personal Data Sub-processing - Define, implement and evaluate processes, procedures and technical\nmeasures for the transfer and sub...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-14",
+            "Description": "Disclosure of Data Sub-processors - Define, implement and evaluate processes, procedures and technical\nmeasures to disclose the details ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-15",
+            "Description": "Limitation of Production Data Use - Obtain authorization from data owners, and manage associated risk\nbefore replicating or using produc...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-16",
+            "Description": "Data Retention and Deletion - Data retention, archiving and deletion is managed in accordance with\nbusiness requirements, applicab...",
+            "Checks": [
+                "s3_bucket_lifecycle_policy_check",
+                "dynamodb_tables_pitr_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-17",
+            "Description": "Sensitive Data Protection - Define and implement, processes, procedures and technical measures\nto protect sensitive data through...",
+            "Checks": [
+                "macie_is_enabled",
+                "s3_bucket_default_encryption"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-18",
+            "Description": "Disclosure Notification - The CSP must have in place, and describe to CSCs the procedure to\nmanage and respond to requests for...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "DSP-19",
+            "Description": "Data Location - Define and implement, processes, procedures and technical measures\nto specify and document the physi...",
+            "Checks": [
+                "s3_bucket_public_access",
+                "rds_instance_no_public_access"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Data Security and Privacy Lifecycle Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "GRC-01",
+            "Description": "Governance Program Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Governance, Risk and Compliance",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "GRC-02",
+            "Description": "Risk Management Program - Establish a formal, documented, and leadership-sponsored Enterprise\nRisk Management (ERM) program th...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Governance, Risk and Compliance",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "GRC-03",
+            "Description": "Organizational Policy Reviews - Review all relevant organizational policies and associated procedures\nat least annually or when a su...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Governance, Risk and Compliance",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "GRC-04",
+            "Description": "Policy Exception Process - Establish and follow an approved exception process as mandated by\nthe governance program whenever a ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Governance, Risk and Compliance",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "GRC-05",
+            "Description": "Information Security Program - Develop and implement an Information Security Program, which includes\nprograms for all the relevant ...",
+            "Checks": [
+                "account_maintain_current_contact_details"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Governance, Risk and Compliance",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "GRC-06",
+            "Description": "Governance Responsibility Model - Define and document roles and responsibilities for planning, implementing,\noperating, assessing, and...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Governance, Risk and Compliance",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "GRC-07",
+            "Description": "Information System Regulatory Mapping - Identify and document all relevant standards, regulations, legal/contractual,\nand statutory requirem...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Governance, Risk and Compliance",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "GRC-08",
+            "Description": "Special Interest Groups - Establish and maintain contact with cloud-related special interest\ngroups and other relevant entitie...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Governance, Risk and Compliance",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "HRS-01",
+            "Description": "Background Screening Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Human Resources",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "HRS-02",
+            "Description": "Acceptable Use of Technology Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Human Resources",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "HRS-03",
+            "Description": "Clean Desk Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures that...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Human Resources",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "HRS-04",
+            "Description": "Remote and Home Working Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures to p...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Human Resources",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "HRS-05",
+            "Description": "Asset returns - Establish and document procedures for the return of organization-owned\nassets by terminated employee...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Human Resources",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "HRS-06",
+            "Description": "Employment Termination - Establish, document, and communicate to all personnel the procedures\noutlining the roles and respons...",
+            "Checks": [
+                "iam_user_accesskey_unused",
+                "iam_user_console_access_unused"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Human Resources",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "HRS-07",
+            "Description": "Employment Agreement Process - Employees sign the employee agreement prior to being granted access\nto organizational information sy...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Human Resources",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "HRS-08",
+            "Description": "Employment Agreement Content - The organization includes within the employment agreements provisions\nand/or terms for adherence to ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Human Resources",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "HRS-09",
+            "Description": "Personnel Roles and Responsibilities - Document and communicate roles and responsibilities of employees,\nas they relate to information asse...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Human Resources",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "HRS-10",
+            "Description": "Non-Disclosure Agreements - Identify, document, and review, at planned intervals, requirements\nfor non-disclosure/confidentialit...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Human Resources",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "HRS-11",
+            "Description": "Security Awareness Training - Establish, document, approve, communicate, apply, evaluate and maintain\na security awareness trainin...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Human Resources",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "HRS-12",
+            "Description": "Personal and Sensitive Data Awareness and Training - Provide all employees with access to sensitive organizational and\npersonal data with appropriate sec...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Human Resources",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "HRS-13",
+            "Description": "Compliance User Responsibility - Make employees aware of their roles and responsibilities for maintaining\nawareness and compliance wi...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Human Resources",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-01",
+            "Description": "Identity and Access Management Policy and Procedures - Establish, document, approve, communicate, implement, apply, evaluate\nand maintain policies and proc...",
+            "Checks": [
+                "iam_root_hardware_mfa_enabled",
+                "iam_root_mfa_enabled",
+                "iam_no_root_access_key"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-02",
+            "Description": "Strong Password Policy and Procedures - Establish, document, approve, communicate, implement, apply, evaluate\nand maintain strong password p...",
+            "Checks": [
+                "iam_user_no_setup_initial_access_key",
+                "iam_user_accesskey_unused",
+                "iam_policy_attached_only_to_group_or_roles"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-03",
+            "Description": "Identity Inventory - Manage, store, and review the information of system identities, and\nlevel of access.\n...",
+            "Checks": [
+                "iam_user_mfa_enabled_console_access",
+                "iam_password_policy_strong",
+                "iam_password_policy_expires_passwords_within_90_days_or_less"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-04",
+            "Description": "Separation of Duties - Employ the separation of duties principle when implementing information\nsystem access.\n...",
+            "Checks": [
+                "iam_role_cross_account_readonlyaccess_policy",
+                "iam_policy_allows_privilege_escalation",
+                "iam_inline_policy_allows_privilege_escalation"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-05",
+            "Description": "Least Privilege - Employ the least privilege principle when implementing information\nsystem access.\n...",
+            "Checks": [
+                "iam_policy_attached_only_to_group_or_roles",
+                "iam_user_no_setup_initial_access_key"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-06",
+            "Description": "User Access Provisioning - Define and implement a user access provisioning process which authorizes,\nrecords, and communicates ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-07",
+            "Description": "User Access Changes and Revocation - De-provision or respectively modify access of movers / leavers or\nsystem identity changes in a timel...",
+            "Checks": [
+                "iam_user_mfa_enabled_console_access"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-08",
+            "Description": "User Access Review - Review and revalidate user access for least privilege and separation\nof duties with a frequency that...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-09",
+            "Description": "Segregation of Privileged Access Roles - Define, implement and evaluate processes, procedures and technical\nmeasures for the segregation of p...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-10",
+            "Description": "Management of Privileged Access Roles - Define and implement an access process to ensure privileged access\nroles and rights are granted for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-11",
+            "Description": "CSCs Approval for Agreed Privileged Access Roles - Define, implement and evaluate processes and procedures for customers\nto participate, where applicab...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-12",
+            "Description": "Safeguard Logs Integrity - Define, implement and evaluate processes, procedures and technical\nmeasures to ensure the logging in...",
+            "Checks": [
+                "iam_support_role_created"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-13",
+            "Description": "Uniquely Identifiable Users - Define, implement and evaluate processes, procedures and technical\nmeasures that ensure users are id...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-14",
+            "Description": "Strong Authentication - Define, implement and evaluate processes, procedures and technical\nmeasures for authenticating acces...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-15",
+            "Description": "Passwords Management - Define, implement and evaluate processes, procedures and technical\nmeasures for the secure managemen...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IAM-16",
+            "Description": "Authorization Mechanisms - Define, implement and evaluate processes, procedures and technical\nmeasures to verify access to data...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Identity & Access Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IPY-01",
+            "Description": "Interoperability and Portability Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Interoperability & Portability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IPY-02",
+            "Description": "Application Interface Availability - Provide application interface(s) to CSCs so that they programmatically\nretrieve their data to enable...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Interoperability & Portability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IPY-03",
+            "Description": "Secure Interoperability and Portability Management - Implement cryptographically secure and standardized network protocols\nfor the management, import and...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Interoperability & Portability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IPY-04",
+            "Description": "Data Portability Contractual Obligations - Agreements must include provisions specifying CSCs access to data\nupon contract termination and will...",
+            "Checks": [
+                "apigateway_restapi_client_certificate_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Interoperability & Portability",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "IVS-01",
+            "Description": "Infrastructure and Virtualization Security Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [
+                "ec2_instance_imdsv2_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Infrastructure & Virtualization Security",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "IVS-02",
+            "Description": "Capacity and Resource Planning - Plan and monitor the availability, quality, and adequate capacity\nof resources in order to deliver t...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Infrastructure & Virtualization Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IVS-03",
+            "Description": "Network Security - Monitor, encrypt and restrict communications between environments\nto only authenticated and authoriz...",
+            "Checks": [
+                "guardduty_is_enabled",
+                "securityhub_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Infrastructure & Virtualization Security",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "IVS-04",
+            "Description": "OS Hardening and Base Controls - Harden host and guest OS, hypervisor or infrastructure control plane\naccording to their respective b...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Infrastructure & Virtualization Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IVS-05",
+            "Description": "Production and Non-Production Environments - Separate production and non-production environments.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Infrastructure & Virtualization Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IVS-06",
+            "Description": "Segmentation and Segregation - Design, develop, deploy and configure applications and infrastructures\nsuch that CSP and CSC (tenant...",
+            "Checks": [
+                "ec2_securitygroup_allow_ingress_from_internet_to_any_port",
+                "vpc_flow_logs_enabled",
+                "ec2_securitygroup_allow_ingress_from_internet_to_port_22",
+                "ec2_securitygroup_allow_ingress_from_internet_to_port_3389",
+                "vpc_default_security_group_closed"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Infrastructure & Virtualization Security",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "IVS-07",
+            "Description": "Migration to Cloud Environments - Use secure and encrypted communication channels when migrating servers,\nservices, applications, or d...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Infrastructure & Virtualization Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "IVS-08",
+            "Description": "Network Architecture Documentation - Identify and document high-risk environments.\n...",
+            "Checks": [
+                "ec2_ebs_snapshot_account_block_public_access"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Infrastructure & Virtualization Security",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "IVS-09",
+            "Description": "Network Defense - Define, implement and evaluate processes, procedures and defense-in-depth\ntechniques for protection,...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Infrastructure & Virtualization Security",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "LOG-01",
+            "Description": "Logging and Monitoring Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [
+                "cloudtrail_multi_region_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Logging and Monitoring",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "LOG-02",
+            "Description": "Audit Logs Protection - Define, implement and evaluate processes, procedures and technical\nmeasures to ensure the security a...",
+            "Checks": [
+                "cloudtrail_log_file_validation_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Logging and Monitoring",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "LOG-03",
+            "Description": "Security Monitoring and Alerting - Identify and monitor security-related events within applications\nand the underlying infrastructure. ...",
+            "Checks": [
+                "cloudwatch_log_group_retention_policy_specific_days_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Logging and Monitoring",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "LOG-04",
+            "Description": "Audit Logs Access and Accountability - Restrict audit logs access to authorized personnel and maintain records\nthat provide unique access a...",
+            "Checks": [
+                "cloudtrail_multi_region_enabled",
+                "cloudtrail_kms_encryption_enabled",
+                "cloudtrail_log_file_validation_enabled",
+                "cloudtrail_s3_dataevents_write_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Logging and Monitoring",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "LOG-05",
+            "Description": "Audit Logs Monitoring and Response - Monitor security audit logs to detect activity outside of typical\nor expected patterns. Establish an...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Logging and Monitoring",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "LOG-06",
+            "Description": "Clock Synchronization - Use a reliable time source across all relevant information processing\nsystems.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Logging and Monitoring",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "LOG-07",
+            "Description": "Logging Scope - Establish, document and implement which information meta/data system\nevents should be logged. Review...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Logging and Monitoring",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "LOG-08",
+            "Description": "Log Records - Generate audit records containing relevant security information.\n...",
+            "Checks": [
+                "cloudwatch_alarm_actions_enabled",
+                "cloudwatch_log_metric_filter_and_alarm_for_cloudtrail_configuration_changes_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Logging and Monitoring",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "LOG-09",
+            "Description": "Log Protection - The information system protects audit records from unauthorized access,\nmodification, and deletion.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Logging and Monitoring",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "LOG-10",
+            "Description": "Encryption Monitoring and Reporting - Establish and maintain a monitoring and internal reporting capability\nover the operations of cryptog...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Logging and Monitoring",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "LOG-11",
+            "Description": "Transaction/Activity Logging - Log and monitor key lifecycle management events to enable auditing\nand reporting on usage of cryptog...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Logging and Monitoring",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "LOG-12",
+            "Description": "Access Control Logs - Monitor and log physical access using an auditable access control\nsystem.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Logging and Monitoring",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "LOG-13",
+            "Description": "Failures and Anomalies Reporting - Define, implement and evaluate processes, procedures and technical\nmeasures for the reporting of ano...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Logging and Monitoring",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "SEF-01",
+            "Description": "Security Incident Management Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Security Incident Management, E-Discovery, & Cloud Forensics",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "SEF-02",
+            "Description": "Service Management Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [
+                "securityhub_enabled",
+                "guardduty_is_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Security Incident Management, E-Discovery, & Cloud Forensics",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "SEF-03",
+            "Description": "Incident Response Plans - 'Establish, document, approve, communicate, apply, evaluate and maintain\na security incident respons...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Security Incident Management, E-Discovery, & Cloud Forensics",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "SEF-04",
+            "Description": "Incident Response Testing - Test and update as necessary incident response plans at planned intervals\nor upon significant organi...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Security Incident Management, E-Discovery, & Cloud Forensics",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "SEF-05",
+            "Description": "Incident Response Metrics - Establish and monitor information security incident metrics.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Security Incident Management, E-Discovery, & Cloud Forensics",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "SEF-06",
+            "Description": "Event Triage Processes - Define, implement and evaluate processes, procedures and technical\nmeasures supporting business proc...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Security Incident Management, E-Discovery, & Cloud Forensics",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "SEF-07",
+            "Description": "Security Breach Notification - Define and implement, processes, procedures and technical measures\nfor security breach notifications...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Security Incident Management, E-Discovery, & Cloud Forensics",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "SEF-08",
+            "Description": "Points of Contact Maintenance - Maintain points of contact for applicable regulation authorities,\nnational and local law enforcement...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Security Incident Management, E-Discovery, & Cloud Forensics",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-01",
+            "Description": "SSRM Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-02",
+            "Description": "SSRM Supply Chain - Apply, document, implement and manage the SSRM throughout the supply\nchain for the cloud service off...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-03",
+            "Description": "SSRM Guidance - Provide SSRM Guidance to the CSC detailing information about the\nSSRM applicability throughout the s...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-04",
+            "Description": "SSRM Control Ownership - Delineate the shared ownership and applicability of all CSA CCM controls\naccording to the SSRM for t...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-05",
+            "Description": "SSRM Documentation Review - Review and validate SSRM documentation for all cloud services offerings\nthe organization uses.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-06",
+            "Description": "SSRM Control Implementation - Implement, operate, and audit or assess the portions of the SSRM\nwhich the organization is responsib...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-07",
+            "Description": "Supply Chain Inventory - Develop and maintain an inventory of all supply chain relationships.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-08",
+            "Description": "Supply Chain Risk Management - CSPs periodically review risk factors associated with all organizations\nwithin their supply chain.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-09",
+            "Description": "Primary Service and Contractual Agreement - Service agreements between CSPs and CSCs (tenants) must incorporate at least the following mutually-...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-10",
+            "Description": "Supply Chain Agreement Review - Review supply chain agreements between CSPs and CSCs at least annually.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-11",
+            "Description": "Internal Compliance Testing - Define and implement a process for conducting internal assessments\nto confirm conformance and effect...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-12",
+            "Description": "Supply Chain Service Agreement Compliance - Implement policies requiring all CSPs throughout the supply chain\nto comply with information securit...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-13",
+            "Description": "Supply Chain Governance Review - Periodically review the organization's supply chain partners' IT\ngovernance policies and procedures....",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "STA-14",
+            "Description": "Supply Chain Data Security Assessment - Define and implement a process for conducting security assessments\nperiodically for all organization...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Supply Chain Management, Transparency, and Accountability",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "TVM-01",
+            "Description": "Threat and Vulnerability Management Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures to i...",
+            "Checks": [
+                "accessanalyzer_enabled",
+                "guardduty_is_enabled",
+                "securityhub_enabled",
+                "inspector2_is_enabled"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Threat & Vulnerability Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "TVM-02",
+            "Description": "Malware Protection Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures to p...",
+            "Checks": [
+                "ec2_instance_managed_by_ssm",
+                "ec2_instance_profile_attached"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Threat & Vulnerability Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "TVM-03",
+            "Description": "Vulnerability Remediation Schedule - Define, implement and evaluate processes, procedures and technical\nmeasures to enable both scheduled...",
+            "Checks": [
+                "ec2_instance_managed_by_ssm"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Threat & Vulnerability Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "TVM-04",
+            "Description": "Detection Updates - Define, implement and evaluate processes, procedures and technical\nmeasures to update detection tool...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Threat & Vulnerability Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "TVM-05",
+            "Description": "External Library Vulnerabilities - Define, implement and evaluate processes, procedures and technical\nmeasures to identify updates for ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Threat & Vulnerability Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "TVM-06",
+            "Description": "Penetration Testing - Define, implement and evaluate processes, procedures and technical\nmeasures for the periodic perform...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Threat & Vulnerability Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "TVM-07",
+            "Description": "Vulnerability Identification - Define, implement and evaluate processes, procedures and technical\nmeasures for the detection of vul...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Threat & Vulnerability Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "TVM-08",
+            "Description": "Vulnerability Prioritization - Use a risk-based model for effective prioritization of vulnerability\nremediation using an industry r...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Threat & Vulnerability Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "TVM-09",
+            "Description": "Vulnerability Management Reporting - Define and implement a process for tracking and reporting vulnerability\nidentification and remediati...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Threat & Vulnerability Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "TVM-10",
+            "Description": "Vulnerability Management Metrics - Establish, monitor and report metrics for vulnerability identification\nand remediation at defined in...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Threat & Vulnerability Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-01",
+            "Description": "Endpoint Devices Policy and Procedures - Establish, document, approve, communicate, apply, evaluate and maintain\npolicies and procedures for ...",
+            "Checks": [
+                "ec2_instance_managed_by_ssm"
+            ],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Automated"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-02",
+            "Description": "Application and Service Approval - Define, document, apply and evaluate a list of approved services,\napplications and sources of applic...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-03",
+            "Description": "Compatibility - Define and implement a process for the validation of the endpoint\ndevice's compatibility with operat...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-04",
+            "Description": "Endpoint Inventory - Maintain an inventory of all endpoints used to store and access company\ndata.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-05",
+            "Description": "Endpoint Management - Define, implement and evaluate processes, procedures and technical\nmeasures to enforce policies and ...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-06",
+            "Description": "Automatic Lock Screen - Configure all relevant interactive-use endpoints to require an automatic\nlock screen.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-07",
+            "Description": "Operating Systems - Manage changes to endpoint operating systems, patch levels, and/or\napplications through the company'...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-08",
+            "Description": "Storage Encryption - Protect information from unauthorized disclosure on managed endpoint\ndevices with storage encryption...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-09",
+            "Description": "Anti-Malware Detection and Prevention - Configure managed endpoints with anti-malware detection and prevention\ntechnology and services.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-10",
+            "Description": "Software Firewall - Configure managed endpoints with properly configured software firewalls.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-11",
+            "Description": "Data Loss Prevention - Configure managed endpoints with Data Loss Prevention (DLP) technologies\nand rules in accordance wit...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-12",
+            "Description": "Remote Locate - Enable remote geo-location capabilities for all managed mobile endpoints.\n...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-13",
+            "Description": "Remote Wipe - Define, implement and evaluate processes, procedures and technical\nmeasures to enable the deletion o...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        },
+        {
+            "Id": "UEM-14",
+            "Description": "Third-Party Endpoint Security Posture - Define, implement and evaluate processes, procedures and technical\nand/or contractual measures to ma...",
+            "Checks": [],
+            "Attributes": [
+                {
+                    "Section": "Universal Endpoint Management",
+                    "Service": "AWS",
+                    "Type": "Manual"
+                }
+            ]
+        }
+    ]
+}
