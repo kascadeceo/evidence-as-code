@@ -88,7 +88,7 @@ Policy controls — governance documentation, HR procedures, physical security, 
 
 ## Full Pipeline (TitanGuard)
 
-This tool is the open-source core of [TitanGuard](https://kascade.security), which adds:
+This is a public demo utility from the TitanGuard evidence-as-code pipeline.:
 - Multi-cloud scan orchestration
 - LLM-generated remediation for every failed control
 - Continuous evidence collection (not annual)
