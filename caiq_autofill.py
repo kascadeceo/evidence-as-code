@@ -26,33 +26,9 @@ from datetime import datetime
 
 
 # OCI-specific control IDs → standard CCM control IDs
-OCI_TO_CCM_MAPPING = {
-    "IAM-O1-OCI": "IAM-01",
-    "IAM-O2-OCI": "IAM-01",
-    "IAM-O3-OCI": "IAM-01",
-    "IAM-O7-OCI": "IAM-07",
-    "IAM-O10-OCI": "IAM-01",
-    "IAM-O12-OCI": "IAM-02",
-    "IAM-O13-OCI": "IAM-02",
-    "LOG-O3-OCI": "LOG-01",
-    "LOG-O4-OCI": "SEF-02",
-    "LOG-O10-OCI": "LOG-01",
-    "LOG-O11-OCI": "LOG-01",
-    "LOG-O12-OCI": "LOG-01",
-    "DCS-O1-OCI": "IAM-01",
-    "DCS-O12-OCI": "IAM-01",
-    "TVM-O1-OCI": "TVM-01",
-}
 
 # Related control proxy lookups — use evidence from related controls
 # when a control has no direct automated checks
-RELATED_CONTROL_MAPPINGS = {
-    "IAM-04": ["IAM-02"],
-    "IAM-05": ["IAM-02"],
-    "LOG-01": ["LOG-04"],
-    "TVM-02": ["TVM-01"],
-    "TVM-03": ["TVM-01"],
-}
 
 # Policy-based controls that require manual attestation
 # These cannot be fully automated — they need human documentation
@@ -136,7 +112,14 @@ MANUAL_REVIEW_DEFAULTS = {
 
 
 def normalize_ccm_id(requirement_id: str) -> str:
-    return OCI_TO_CCM_MAPPING.get(requirement_id, requirement_id)
+    """
+    Control IDs pass through unchanged in this sample.
+
+    Provider-specific control-ID normalization (for clouds that emit their own
+    IDs rather than standard CCM ones) is part of the Kascade platform, not
+    this sample.
+    """
+    return requirement_id
 
 
 def detect_provider(csv_path: str) -> str:
@@ -220,12 +203,10 @@ def main():
         relevant_evidence = df_evidence[df_evidence['CCM_ID'] == control_root]
 
         # Step 2: Related control proxy
-        if relevant_evidence.empty and control_root in RELATED_CONTROL_MAPPINGS:
-            for related in RELATED_CONTROL_MAPPINGS[control_root]:
-                proxy = df_evidence[df_evidence['CCM_ID'] == related]
-                if not proxy.empty:
-                    relevant_evidence = proxy
-                    break
+        # No direct evidence for this control. This sample does not infer an
+        # answer from related controls -- it falls through to the manual-review
+        # default below. Proxy-evidence inference is a judgement call and it
+        # lives in the Kascade platform, where it can be reviewed.
 
         # Step 3: Apply evidence
         if not relevant_evidence.empty:

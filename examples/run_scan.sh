@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Run a Prowler CSA CCM v4.0 scan and generate a filled CAIQ
+# Run a CSA CCM v4.0 scan (AWS) and generate a filled CAIQ draft
 #
 # Prerequisites:
 #   pip install prowler
@@ -10,7 +10,10 @@
 
 set -e
 
-PROVIDER="${1:-aws}"
+# AWS only. This sample ships the CSA CCM mapping for AWS; multi-cloud mapping
+# is part of the Kascade Security platform. Passing another provider would ask
+# the scanner for a compliance file that is not in this repo.
+PROVIDER="aws"
 OUTPUT_DIR="./output"
 mkdir -p "$OUTPUT_DIR"
 

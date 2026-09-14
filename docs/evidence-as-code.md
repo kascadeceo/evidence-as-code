@@ -44,7 +44,6 @@ Not a score. An actual compliance artifact an auditor can verify.
 | AIS (Application & Interface Security) | 4 |
 | + 8 more domains | varies |
 
-Azure coverage is broader: 367 check mappings across 104 controls.
 
 ## What Requires Human Attestation
 
@@ -67,11 +66,11 @@ The tool handles the rest.
 
 ## Framework Files
 
-The `frameworks/` directory contains audited Prowler compliance framework files:
+The `frameworks/` directory contains the CSA CCM v4.0 framework definition this
+sample uses. It covers AWS only — multi-cloud mapping is part of the Kascade
+Security platform rather than this sample:
 
 - `csa_ccm_4.0_aws.json` — 197 controls, 129 check mappings
-- `csa_ccm_4.0_azure.json` — 130 controls, 367 check mappings
-- `csa_ccm_4.0_oci.json` — 15 OCI-specific controls
 
 Use these with Prowler's `--compliance` flag or as custom framework files.
 
