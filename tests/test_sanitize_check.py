@@ -16,9 +16,9 @@ class SanitizeCheckTests(unittest.TestCase):
         engine = "prow" + "ler"
         cases = [
             ("notes.txt", "account " + ("4" * 12), ()),
-            ("notes.txt", "ocid1.bucket.oc1..letters", ()),
-            ("notes.txt", "arn:aws:s3:::private-bucket", ()),
-            ("notes.txt", "someone@corp.example", ()),
+            ("notes.txt", "ocid" + "1.bucket.oc1..letters", ()),
+            ("notes.txt", "arn" + ":aws:s3:::private-bucket", ()),
+            ("notes.txt", "someone" + "@corp.example", ()),
             ("notes.txt", "private-host", ("private-host",)),
             ("notes.txt", engine, ()),
         ]
@@ -47,6 +47,23 @@ class SanitizeCheckTests(unittest.TestCase):
         self.assert_flagged(
             "notes.txt", f"Scan engine attribution: {engine} (Apache-2.0)"
         )
+
+    def test_new_file_naming_engine_fails(self) -> None:
+        engine = "prow" + "ler"
+        self.assert_flagged("new_public_file.py", f"scanner = {engine!r}")
+
+    def test_legacy_paths_only_exempt_engine_rule(self) -> None:
+        engine = "prow" + "ler"
+        legacy_paths = (
+            "caiq_autofill.py",
+            "examples/run_scan.sh",
+            "docs/evidence-as-code.md",
+        )
+        for path in legacy_paths:
+            with self.subTest(path=path):
+                self.assert_clean(path, engine)
+                problems = scan_text(path, engine + " " + ("4" * 12))
+                self.assertEqual(["account_id"], [rule for _, rule in problems])
 
 
 if __name__ == "__main__":
