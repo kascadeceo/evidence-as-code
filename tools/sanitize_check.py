@@ -25,6 +25,7 @@ LEGACY_ENGINE_PATHS = {
     "examples/run_scan.sh",
     "docs/evidence-as-code.md",
 }
+ATTRIBUTION_PATHS = {"README.md", "mappings/README.md"}
 
 
 def scan_text(
@@ -51,7 +52,7 @@ def scan_text(
 
         if ENGINE.search(line):
             attribution = (
-                normalized_path == "README.md"
+                normalized_path in ATTRIBUTION_PATHS
                 and line.startswith("Scan engine attribution:")
             )
             legacy_path = normalized_path in LEGACY_ENGINE_PATHS

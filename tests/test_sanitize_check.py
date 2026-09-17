@@ -40,6 +40,9 @@ class SanitizeCheckTests(unittest.TestCase):
         self.assert_clean(
             "README.md", f"Scan engine attribution: {engine} (Apache-2.0)"
         )
+        self.assert_clean(
+            "mappings/README.md", f"Scan engine attribution: {engine} (Apache-2.0)"
+        )
 
     def test_engine_attribution_is_narrow(self) -> None:
         engine = "prow" + "ler"

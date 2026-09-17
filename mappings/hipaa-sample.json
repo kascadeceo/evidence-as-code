@@ -1,0 +1,37 @@
+{
+  "source": "upstream compliance metadata, tag 5.42.0, see mappings/README.md",
+  "license": "Apache-2.0",
+  "retrieved": "2026-09-17",
+  "note": "sample only; allow-list what you agree with",
+  "requirements": [
+    {
+      "id": "164_308_a_3_ii_c",
+      "name": "164.308(a)(3)(ii)(C) Termination procedures",
+      "check_ids": ["iam_rotate_access_key_90_days"]
+    },
+    {
+      "id": "164_308_a_1_ii_a",
+      "name": "164.308(a)(1)(ii)(A) Risk analysis",
+      "check_ids": ["config_recorder_all_regions_enabled", "guardduty_is_enabled"]
+    },
+    {
+      "id": "164_308_a_5_ii_b",
+      "name": "164.308(a)(5)(ii)(B) Protection from malicious software",
+      "check_ids": ["ec2_instance_managed_by_ssm", "ssm_managed_compliant_patching"]
+    },
+    {
+      "id": "164_308_a_8",
+      "name": "164.308(a)(8) Evaluation",
+      "check_ids": ["guardduty_is_enabled", "securityhub_enabled"]
+    },
+    {
+      "id": "164_308_a_4_i",
+      "name": "164.308(a)(4)(i) Information access management",
+      "check_ids": [
+        "iam_aws_attached_policy_no_administrative_privileges",
+        "iam_customer_attached_policy_no_administrative_privileges",
+        "iam_inline_policy_no_administrative_privileges"
+      ]
+    }
+  ]
+}
