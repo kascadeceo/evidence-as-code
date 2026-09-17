@@ -1,0 +1,71 @@
+{
+  "version": "kascade-provenance-v1",
+  "entries": [
+    {
+      "version": "kascade-provenance-v1",
+      "sequence": 0,
+      "generated_at": "2026-09-01T12:00:00.000Z",
+      "manifest_version": "example-manifest-1",
+      "evidence_digest": "fca834a965cc9c8c022bc713b44b2c550eb7ce5c3dbfda2ee9ec1b94b8764f50",
+      "artifacts": [
+        {
+          "name": "score.json",
+          "digest": "d1eb2938979ebf61522eef8a3d0dc2f3f4739e8d13d7f84b5f92c6b1e228a129",
+          "bytes": 44
+        },
+        {
+          "name": "poam.md",
+          "digest": "cea6e0dde2dbad0f8ec1a0eb1537a8565f0042ddc91ea7cc011c082737fdf4c1",
+          "bytes": 76
+        },
+        {
+          "name": "ssp.md",
+          "digest": "e45d3fa4ec6918daba7e4398fd7b683812040b7ab08322f3843501552908feaa",
+          "bytes": 80
+        }
+      ],
+      "score": {
+        "conservative": 110,
+        "assessed_only": 0.45,
+        "assessment_coverage": 0.1,
+        "demonstrated_failures": 1,
+        "demonstrated_weight": 5
+      },
+      "prev_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+      "record_digest": "5a12ceac2d95164452be0bd896d860e705caedfd593e415d03adcbe1b8e407fb"
+    },
+    {
+      "version": "kascade-provenance-v1",
+      "sequence": 1,
+      "generated_at": "2026-09-02T12:00:00.000Z",
+      "manifest_version": "example-manifest-1",
+      "evidence_digest": "58500ecfc2923ef8ca73668487afcd0dedfb53de2358ec3f69e492afe9221a3a",
+      "artifacts": [
+        {
+          "name": "score.json",
+          "digest": "6014ad8e8141a19818f02c253a07e28c7465316acca618746506ac48d7e6fcc2",
+          "bytes": 43
+        },
+        {
+          "name": "poam.md",
+          "digest": "1e4f6ba1039f2c7651b60c84da873b3bbde4ab5a56eb691ef0603c9f831003fe",
+          "bytes": 76
+        },
+        {
+          "name": "ssp.md",
+          "digest": "692377c000c0c134ca1bcd974e6efbf0a92878e5c99ae5087e857756c81f00ee",
+          "bytes": 80
+        }
+      ],
+      "score": {
+        "conservative": 98,
+        "assessed_only": 0.45,
+        "assessment_coverage": 0.1,
+        "demonstrated_failures": 1,
+        "demonstrated_weight": 5
+      },
+      "prev_digest": "5a12ceac2d95164452be0bd896d860e705caedfd593e415d03adcbe1b8e407fb",
+      "record_digest": "7144ba19467cad29721db4ad551111fca3296570db098be4c161331a78b96602"
+    }
+  ]
+}

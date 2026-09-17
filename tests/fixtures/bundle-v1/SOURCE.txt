@@ -1,0 +1,4 @@
+Synthetic fixture, invented data, contract kascade-provenance-v1
+
+78753cbdd28b9f9a83240ef343ec596e24f1d9c60e63954058932d892ade6e4b  expected.json
+6201fe2e8b83b136d1bbcee0ebec140546d1879e10a904e927389a96a8bae494  canonical-vectors.json
