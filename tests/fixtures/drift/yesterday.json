@@ -1,0 +1,37 @@
+[
+  {
+    "metadata": {"event_code": "storage_public_access"},
+    "resources": [{"uid": "bucket-example-01"}],
+    "status_code": "PASS",
+    "severity": "high",
+    "finding_info": {"title": "Example bucket blocks public access"}
+  },
+  {
+    "metadata": {"event_code": "logging_enabled"},
+    "resources": [{"uid": "trail-example-01"}],
+    "status_code": "FAIL",
+    "severity": "medium",
+    "finding_info": {"title": "Example audit logging enabled"}
+  },
+  {
+    "metadata": {"event_code": "encryption_enabled"},
+    "resources": [{"uid": "volume-example-01"}],
+    "status_code": "FAIL",
+    "severity": "high",
+    "finding_info": {"title": "Example volume encrypted"}
+  },
+  {
+    "metadata": {"event_code": "duplicate_example"},
+    "resources": [{"uid": "resource-example-01"}],
+    "status_code": "PASS",
+    "severity": "low",
+    "finding_info": {"title": "Duplicate example"}
+  },
+  {
+    "metadata": {"event_code": "duplicate_example"},
+    "resources": [{"uid": "resource-example-01"}],
+    "status_code": "FAIL",
+    "severity": "high",
+    "finding_info": {"title": "Duplicate example"}
+  }
+]

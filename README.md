@@ -1,118 +1,101 @@
 # Evidence-as-Code — a working sample
 
-**Your cloud already proves most of your compliance posture. This is a small,
-runnable demonstration of collecting it like code instead of like screenshots.**
+Your cloud already exposes evidence about access, encryption, logging, and configuration through read-only APIs. This repository shows how to collect that evidence like code: structured, reviewable, diffable, and independently verifiable.
 
-Point a read-only scan at your cloud, and it already knows whether your buckets
-are public, your keys rotate, and your logging is on. That is evidence. It just
-arrives as findings instead of as answers.
+This is intentionally thin teaching code from [Kascade Security](https://kascadesecurity.com). It demonstrates the workflow without publishing the platform that generates and manages evidence at scale.
 
-This repo turns a **CSA CCM v4.0** scan into a filled **CAIQ v4.0.3** draft —
-the questionnaire behind a CSA STAR Level 1 self-assessment — with evidence
-cited next to every answer it could prove and an explicit flag on every answer
-it could not.
+## 1. Run one scanner with structured output, on a schedule
 
-**One framework. One pipeline. Run it yourself.**
+Use read-only credentials, run nightly, and retain the structured JSON. Committing or otherwise versioning each scan creates evidence history that screenshots cannot provide.
 
-A sample from [Kascade Security](https://kascadesecurity.com).
+Start with [`examples/run_scan.sh`](examples/run_scan.sh). Review the script and scope its credential before running it in your environment.
 
----
+Scan engine attribution: [Prowler](https://github.com/prowler-cloud/prowler) is the open-source scanner used by the example script (Apache-2.0).
 
-## What this sample is — and what it isn't
+## 2. Read the compliance metadata already in your findings
 
-This is **one framework, end to end**, so you can run the idea and see it work.
-It is deliberately not the whole thing.
+Do not rebuild a framework dictionary for every engagement. Start with the metadata carried by the findings, choose one framework, then allow-list only the mappings your team agrees with.
 
-| Here | At Kascade |
-|---|---|
-| CSA CCM → CAIQ | Evidence mapped across **39 frameworks** from a single scan — HIPAA, SOC 2, ISO 27001, NIST 800-171, 800-53, PCI |
-| One scan, one artifact | **Drift detection** — what changed between this scan and the last one, which is what an annual audit structurally cannot see |
-| A CSV in, a CSV out | **Hash-chained provenance** — every artifact tied to the scan that produced it, and tamper-evident |
-| You run it | Continuous collection, SSP and POA&M generation, an evidence trail an assessor can check |
+[`mappings/`](mappings/) contains deliberately small HIPAA and SOC 2 samples with source and license information. They are examples, not complete crosswalks or audit advice.
 
-**This is a single-cloud sample of the approach.** The multi-cloud mapping
-layer, drift detection, and evidence provenance are the commercial platform —
-not omissions from this repo. If the sample is useful, the platform is the same
-idea with the hard parts finished:
-**[kascadesecurity.com](https://kascadesecurity.com)**.
-
-## How it works
-
-```
-cloud compliance scan  (CSA CCM v4.0, CSV)
-    ↓
-caiq_autofill.py
-    ↓
-CAIQ_filled_<date>.csv   ← a draft, with its evidence attached
-```
-
-- **Automated controls** — answered with evidence citations from the scan
-- **Policy and process controls** — marked `Partial`, with the specific
-  documentation still required
-
-## Scope — on purpose
-
-Stated plainly, because a compliance tool that overstates itself is the problem
-it claims to solve:
-
-- **It produces a draft, not a submission.** Most answers land on
-  `Partial — review required`, because a scan cannot see your documentation or
-  your process. That is the honest ceiling of automated evidence.
-- **It does not make you compliant.** It makes your posture *provable*.
-- **An unanswered control is never a pass.** Anything the scan could not
-  establish stays unanswered. This is the single rule worth stealing from this
-  repo even if you never run it.
-- **One framework, one cloud, one direction.** AWS only, CSA CCM only. It does
-  not infer an answer from a related control when direct evidence is missing —
-  it says `Partial`. Multi-cloud mapping, multi-framework crosswalks, drift and
-  provenance are the commercial product.
-
-## Quickstart
+## 3. Diff today against yesterday and alert on it
 
 ```bash
-pip install -r requirements.txt
+python3 drift_diff.py yesterday.json today.json
+```
 
-# 1. Produce a CSA CCM v4.0 compliance CSV from your cloud — read-only.
-#    See "Producing the scan".
+The tool prints each new failure. Exit 1 is the alert hook, exit 0 means no new failures, and exit 2 means the input could not be read. Machine-readable output is available with `--json`.
 
-# 2. Get the CAIQ template from CSA:
-#    https://cloudsecurityalliance.org/star/registry/documentation
+```bash
+python3 drift_diff.py --json yesterday.json today.json
+```
 
-# 3. Fill it.
+## 4. Verify an evidence bundle
+
+```bash
+python3 verify.py examples/evidence-bundle
+```
+
+The verifier checks every provenance record, every link in the SHA-256 chain, and the current artifacts listed by the latest record. It uses only the Python standard library.
+
+Try the tamper case on a disposable copy:
+
+```bash
+cp -r examples/evidence-bundle /tmp/evidence-bundle
+echo >> /tmp/evidence-bundle/ssp.md
+python3 verify.py /tmp/evidence-bundle
+```
+
+The second command reports `artifact_altered` and exits 1. The bundle is synthetic and contains no customer data.
+
+## 5. Draft a CAIQ from scan evidence
+
+The original sample remains available:
+
+```bash
 python3 caiq_autofill.py \
-  --scan ./output/<scan>_csa_ccm_4.0_aws.csv \
+  --scan ./output/scan_csa_ccm_4.0_aws.csv \
   --template CAIQv4.0.3_STAR-Security-Questionnaire.xlsx
 ```
 
-Use **read-only credentials.** Nothing here needs write access to your cloud,
-and nothing here should have it.
+It produces a draft, not a submission. Evidence-backed answers are cited; questions the scan cannot prove remain marked for review. The CSA template is not redistributed here.
 
-## Producing the scan
+## What is public here, and what remains in the platform
 
-This is a consumer, not a scanner. It reads the CSA CCM v4.0 compliance CSV
-produced by [Prowler](https://github.com/prowler-cloud/prowler), an open-source
-multi-cloud scanner (Apache-2.0):
+| This repository | Kascade platform |
+|---|---|
+| Verify a supplied evidence bundle | Generate and retain evidence bundles continuously |
+| Diff two supplied scans | Detect and route drift across fleets and tenants |
+| Review small, sourced mapping samples | Normalize and map evidence across multiple clouds and frameworks |
+| Draft one CAIQ from a scan | Generate governed SSP and POA&M artifacts with full provenance |
+
+The dividing line is generation and operation at scale. Verification and a small two-scan diff are public so anyone can inspect the core idea. Collection, normalization, cross-cloud mapping, bundle generation, and fleet operations remain platform capabilities.
+
+## Honest scope
+
+- A cloud scan cannot assess documentation, process, or human behavior.
+- An unanswered control is never a pass.
+- A mapping is a reviewable claim, not automatic truth.
+- Verification proves whether the supplied chain and current artifacts agree; it does not prove the underlying control was designed correctly.
+- Nothing here writes to your cloud.
+
+## Test locally
 
 ```bash
-prowler aws --compliance csa_ccm_4.0_aws --output-directory ./output -M csv
+python3 -m unittest discover -s tests -v
+python3 tools/sanitize_check.py
 ```
 
-`frameworks/` holds the CCM v4.0 definitions this sample uses — pass them with
-`--compliance` or as custom framework files.
+CI runs the fixed sanitization rules only. The private denylist is a developer-side guard run before each push because it contains local identifiers and is intentionally not committed.
 
-## Credits
-
-- [Prowler](https://github.com/prowler-cloud/prowler) — Apache-2.0. Scanning is
-  a solved, commoditized problem and this project does not re-solve it; it
-  builds the evidence layer on top.
-- [Cloud Security Alliance](https://cloudsecurityalliance.org) — CCM v4.0 and
-  CAIQ v4.0.3. The CAIQ template is CSA's and is not redistributed here.
+The public examples and tools require Python 3.10 or newer and use only the standard library. The CAIQ utility retains its existing dependencies in `requirements.txt`.
 
 ## Contributing
 
-PRs welcome. If a mapped check ID is wrong, missing, or broken, open an issue —
-a wrong mapping in a compliance artifact is worse than a missing one.
+Issues and pull requests are welcome. Treat incorrect mappings as defects: a missing claim is safer than a confident wrong one.
+
+Find Kascade Security at [kascadesecurity.com](https://kascadesecurity.com) and Darius Davis on [LinkedIn](https://linkedin.com/in/ddbna).
 
 ## License
 
-See [LICENSE](LICENSE).
+See [LICENSE](LICENSE). Upstream mapping excerpts retain their Apache-2.0 attribution in [`mappings/README.md`](mappings/README.md).

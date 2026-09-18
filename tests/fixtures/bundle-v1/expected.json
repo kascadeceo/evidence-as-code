@@ -1,0 +1,57 @@
+{
+  "verified": {
+    "verdict": "verified",
+    "exit_code": 0,
+    "entries_checked": 2,
+    "artifacts_checked": 3,
+    "problems": []
+  },
+  "tampered-artifact": {
+    "verdict": "not_verified",
+    "exit_code": 1,
+    "entries_checked": 2,
+    "artifacts_checked": 3,
+    "problems": [
+      {
+        "sequence": 1,
+        "kind": "artifact_altered"
+      }
+    ]
+  },
+  "tampered-record": {
+    "verdict": "not_verified",
+    "exit_code": 1,
+    "entries_checked": 2,
+    "artifacts_checked": 3,
+    "problems": [
+      {
+        "sequence": 0,
+        "kind": "record_tampered"
+      }
+    ]
+  },
+  "rechained-record": {
+    "verdict": "not_verified",
+    "exit_code": 1,
+    "entries_checked": 2,
+    "artifacts_checked": 3,
+    "problems": [
+      {
+        "sequence": 1,
+        "kind": "chain_broken"
+      }
+    ]
+  },
+  "missing-artifact": {
+    "verdict": "not_verified",
+    "exit_code": 1,
+    "entries_checked": 2,
+    "artifacts_checked": 2,
+    "problems": [
+      {
+        "sequence": 1,
+        "kind": "artifact_missing"
+      }
+    ]
+  }
+}

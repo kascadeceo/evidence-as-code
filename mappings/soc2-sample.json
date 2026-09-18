@@ -1,0 +1,33 @@
+{
+  "source": "upstream compliance metadata, tag 5.42.0, see mappings/README.md",
+  "license": "Apache-2.0",
+  "retrieved": "2026-09-17",
+  "note": "sample only; allow-list what you agree with",
+  "requirements": [
+    {
+      "id": "cc_3_4",
+      "name": "CC3.4 COSO Principle 9: identify and assess significant changes",
+      "check_ids": ["config_recorder_all_regions_enabled"]
+    },
+    {
+      "id": "cc_6_2",
+      "name": "CC6.2 authorize users before granting system access",
+      "check_ids": ["rds_instance_no_public_access"]
+    },
+    {
+      "id": "cc_8_1",
+      "name": "CC8.1 authorize and test changes to systems and procedures",
+      "check_ids": ["config_recorder_all_regions_enabled"]
+    },
+    {
+      "id": "cc_c_1_1",
+      "name": "C1.1 identify and maintain confidential information",
+      "check_ids": ["rds_instance_deletion_protection"]
+    },
+    {
+      "id": "cc_4_2",
+      "name": "CC4.2 communicate control deficiencies for corrective action",
+      "check_ids": ["guardduty_is_enabled", "guardduty_no_high_severity_findings"]
+    }
+  ]
+}
