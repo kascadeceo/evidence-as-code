@@ -86,6 +86,8 @@ python3 -m unittest discover -s tests -v
 python3 tools/sanitize_check.py
 ```
 
+CI runs the fixed sanitization rules only. The private denylist is a developer-side guard run before each push because it contains local identifiers and is intentionally not committed.
+
 The public examples and tools require Python 3.10 or newer and use only the standard library. The CAIQ utility retains its existing dependencies in `requirements.txt`.
 
 ## Contributing

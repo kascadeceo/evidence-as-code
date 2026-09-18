@@ -92,23 +92,52 @@ def _load_ledger(bundle: Path) -> dict[str, Any]:
         raise BundleError("provenance.json is not valid JSON") from error
     if not isinstance(ledger, dict) or not isinstance(ledger.get("entries"), list):
         raise BundleError("provenance.json lacks an entries list")
-    if not ledger["entries"]:
-        raise BundleError("provenance.json contains no entries")
     return ledger
+
+
+def _provenance_shape_problems(entries: list[Any]) -> list[tuple[int, str]]:
+    """Return fail-closed problems before any ledger field is dereferenced."""
+    if not entries:
+        return [(-1, "provenance_malformed")]
+
+    problems: list[tuple[int, str]] = []
+    for index, entry in enumerate(entries):
+        if not isinstance(entry, dict):
+            problems.append((index, "provenance_malformed"))
+            continue
+
+        sequence = entry.get("sequence")
+        report_sequence = sequence if type(sequence) is int else index
+        artifacts = entry.get("artifacts")
+        record_fields_valid = (
+            type(sequence) is int
+            and isinstance(entry.get("generated_at"), str)
+            and isinstance(entry.get("prev_digest"), str)
+            and isinstance(entry.get("record_digest"), str)
+        )
+        artifacts_valid = isinstance(artifacts, list) and all(
+            isinstance(artifact, dict)
+            and isinstance(artifact.get("name"), str)
+            and isinstance(artifact.get("digest"), str)
+            for artifact in artifacts
+        )
+        if not record_fields_valid or not artifacts_valid:
+            problems.append((report_sequence, "provenance_malformed"))
+    return problems
 
 
 def verify_bundle(bundle: str | Path) -> tuple[str, list[tuple[int, str]]]:
     """Verify ledger records, their chain, and the latest entry's artifacts."""
     directory = Path(bundle)
     entries = _load_ledger(directory)["entries"]
+    shape_problems = _provenance_shape_problems(entries)
+    if shape_problems:
+        return "not_verified", shape_problems
+
     problems: list[tuple[int, str]] = []
     expected_previous = GENESIS
 
     for index, entry in enumerate(entries):
-        if not isinstance(entry, dict):
-            problems.append((index, "record_tampered"))
-            expected_previous = None
-            continue
         sequence = entry.get("sequence", index)
         report_sequence = sequence if isinstance(sequence, int) else index
         if sequence != index:

@@ -31,14 +31,27 @@ def load_findings(source: str | Path) -> dict[Key, Finding]:
         records = json.loads(path.read_text(encoding="utf-8"))
         if not isinstance(records, list):
             raise ValueError(f"expected a JSON list: {path}")
-        for record in records:
-            resources = record.get("resources") or [{}]
+        for index, record in enumerate(records):
+            location = f"{path}: record {index}"
+            if not isinstance(record, dict):
+                raise ValueError(f"{location} must be an object")
+            metadata = record.get("metadata")
+            if not isinstance(metadata, dict):
+                raise ValueError(f"{location} metadata must be an object")
+            resources = record.get("resources")
+            if not isinstance(resources, list) or not resources:
+                raise ValueError(f"{location} resources must be a non-empty list")
+            if not isinstance(resources[0], dict):
+                raise ValueError(f"{location} first resource must be an object")
+            finding_info = record.get("finding_info", {})
+            if not isinstance(finding_info, dict):
+                raise ValueError(f"{location} finding_info must be an object")
             item = {
-                "event_code": str(record.get("metadata", {}).get("event_code", "")),
+                "event_code": str(metadata.get("event_code", "")),
                 "resource_uid": str(resources[0].get("uid", "")),
                 "status_code": str(record.get("status_code", "")),
                 "severity": str(record.get("severity", "unknown")),
-                "title": str(record.get("finding_info", {}).get("title", "")),
+                "title": str(finding_info.get("title", "")),
             }
             key = (item["event_code"], item["resource_uid"])
             if not all(key):

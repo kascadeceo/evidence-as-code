@@ -66,6 +66,28 @@ class DriftDiffTests(unittest.TestCase):
         result = self.run_cli(FIXTURES / "missing.json", FIXTURES / "today.json")
         self.assertEqual(2, result.returncode)
 
+    def test_malformed_records_exit_two_without_traceback(self) -> None:
+        malformed_records = {
+            "record": [1],
+            "metadata": [{"metadata": [], "resources": [{}]}],
+            "resources": [{"metadata": {}, "resources": {}}],
+            "first resource": [{"metadata": {}, "resources": [1]}],
+        }
+        with tempfile.TemporaryDirectory() as directory:
+            target = Path(directory)
+            for name, payload in malformed_records.items():
+                with self.subTest(shape=name):
+                    malformed = target / f"{name.replace(' ', '-')}.json"
+                    malformed.write_text(json.dumps(payload), encoding="utf-8")
+                    result = self.run_cli(malformed, FIXTURES / "today.json")
+                    self.assertEqual(2, result.returncode, result.stderr)
+                    self.assertTrue(
+                        result.stdout.startswith("UNREADABLE INPUT"), result.stdout
+                    )
+                    self.assertIn(str(malformed), result.stdout)
+                    self.assertIn("record 0", result.stdout)
+                    self.assertNotIn("Traceback", result.stderr)
+
     def test_directory_reads_every_ocsf_json(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             target = Path(directory)

@@ -55,6 +55,31 @@ class VerifyBundleTests(unittest.TestCase):
             self.assertEqual(2, malformed.returncode)
             self.assertEqual(1, len(malformed.stdout.strip().splitlines()))
 
+    def test_malformed_provenance_shapes_fail_closed(self) -> None:
+        cases = {
+            "non-object entry": ({"entries": [1]}, [(0, "provenance_malformed")]),
+            "non-list artifacts": (
+                {"entries": [{"sequence": 0, "artifacts": {}}]},
+                [(0, "provenance_malformed")],
+            ),
+            "missing final entry": ({"entries": []}, [(-1, "provenance_malformed")]),
+        }
+        for name, (ledger, expected) in cases.items():
+            with self.subTest(case=name), tempfile.TemporaryDirectory() as directory:
+                bundle = Path(directory)
+                (bundle / "provenance.json").write_text(
+                    json.dumps(ledger), encoding="utf-8"
+                )
+                verdict, problems = verify.verify_bundle(bundle)
+                self.assertEqual("not_verified", verdict)
+                self.assertEqual(expected, problems)
+
+                result = self.run_cli(bundle)
+                self.assertEqual(1, result.returncode, result.stderr)
+                self.assertTrue(result.stdout.startswith("NOT VERIFIED"), result.stdout)
+                self.assertIn("provenance_malformed", result.stdout)
+                self.assertNotIn("Traceback", result.stderr)
+
     def test_one_byte_edit_is_detected(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             bundle = Path(directory) / "bundle"
